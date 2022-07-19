@@ -1,0 +1,6 @@
+<launch>
+
+<include file="$(find realsense2_camera)/launch/test.launch" />
+<include file="$(find imu_filter_madgwick)/launch/imu_filter_madgwick.launch" />
+</launch>
+   

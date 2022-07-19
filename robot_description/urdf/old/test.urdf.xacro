@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot name="realsense2_camera" xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:include filename="$(find robot_description)/urdf/common_properties.xacro"/>
+<xacro:include filename="$(find robot_description)/urdf/_t265.urdf.xacro"/> 
+<xacro:include filename="$(find robot_description)/urdf/VLP-16.urdf.xacro"/>
+
+  <link name="base_link" />
+
+  <link name="imu_link">
+    <visual>
+      <origin xyz="0 0 0" />
+      <geometry>
+        <box size="0.021 .016 .04"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="1 1 0 1"/>
+      </material>
+    </visual>
+
+  </link>
+  <joint name="imu_link_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="imu_link" />
+    <origin xyz="0 0 0" />
+  </joint>
+
+  <xacro:sensor_t265 parent="imu_link" name="rs_t265" topics_ns="rs_t265">
+    <origin xyz="0.395 0 0.475" rpy="0 0 0" />
+</xacro:sensor_t265>
+
+  <xacro:VLP-16 parent="base_link" name="velodyne" topic="/velodyne_points2" organize_cloud="false" hz="10" samples="440" gpu="true">
+    <origin xyz="0.365 0 0.39" rpy="0 0 0" />
+  </xacro:VLP-16>
+
+</robot>

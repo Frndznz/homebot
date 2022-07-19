@@ -1,0 +1,7 @@
+<launch>
+
+<include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" />
+<include file="$(find realsense2_camera)/launch/test_odom.launch" />
+
+</launch>
+   

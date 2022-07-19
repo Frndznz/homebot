@@ -1,0 +1,21 @@
+<launch>
+  <param name="robot_description" command="$(find xacro)/xacro '$(find robot_description)/urdf/homebot_imu.urdf.xacro'" /> 
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="50.0" />
+    <param name="tf_prefix" value=""/>
+  </node>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+  <node name="openzen_sensor" pkg="openzen_sensor" type="openzen_sensor_node" />
+  <rosparam>
+     /camera/tracking_module/enable_relocalization: false
+     /camera/tracking_module/enable_pose_jumping: false
+   </rosparam>
+
+<include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" />
+<!-- <include file="$(find realsense2_camera)/launch/test.launch" /> 
+<include file="$(find imu_filter_madgwick)/launch/imu_filter_madgwick.launch" /> -->
+
+</launch>
+   
