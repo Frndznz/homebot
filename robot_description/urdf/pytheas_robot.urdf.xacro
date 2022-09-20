@@ -228,7 +228,7 @@
 <!-- Sensors -->
 
 <xacro:IG1 parent="base_link" name="IMU" topic="/imu/data">
-    <origin xyz="${(base_length/2)-0.12} 0.1 ${((base_height + platform1_elevation)/2)}" rpy="0 0 0" />
+    <origin xyz="${(base_length/2)+0.095} -0.025 ${((base_height + platform1_elevation)/2)+0.072}" rpy="0 0 0" />
 </xacro:IG1>
 
 <xacro:OS1-32 parent="base_link" name="os1_sensor" topic_points="/os1_cloud_node/points" topic_imu="/os1_cloud_node/imu">
